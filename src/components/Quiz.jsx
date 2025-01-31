@@ -54,6 +54,13 @@ const Quiz = () => {
     return <div className="text-center mt-10 text-red-500">{error}</div>;
   }
 
+  const restartQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswer(null);
+    setScore(0);
+    setQuizFinished(false);
+  };
+
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
       {!quizFinished ? (
@@ -91,9 +98,13 @@ const Quiz = () => {
       ) : (
         <div className="text-center">
           <h2 className="text-2xl font-bold">Quiz Completed!</h2>
-          <p className="mt-2 text-lg">
-            Your Score: {score} / {questions.length}
-          </p>
+          <p className="mt-2 text-lg">Your Score: {score} / {questions.length}</p>
+          <button
+            className="mt-4 px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition"
+            onClick={restartQuiz}
+          >
+            Start Again
+          </button>
         </div>
       )}
     </div>
